@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Answer View - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<div th:replace="fragments/header :: header"></div>
+			<div class="page-header">
+				<h1>Answers</h1>
+				<h2 th:text="'Question : ' + ${question.question}"></h2>
+			</div>
+			<div sec:authorize="hasAuthority('EDIT')" class="new-button-action">
+				<a th:href="@{/quizzes/{id}/questions/answer/add?questionId={Qid}(id=${quiz.id}, Qid=${question.id})}">Add Answer +</a>
+			</div>
+			<div class="body">
+				<table class="quiz-table">
+				  <tr>
+				    <th></th>
+				    <th>Answer</th>
+				    <th>Correct</th>
+				  </tr>
+				  <tr id="answerRow" th:each="answer : ${answerList}" th:data-answerId="${answer.id}" th:data-correct="${answer.correct}">
+				    <td id="answerOrderCell"></td>
+				    <td th:text="${answer.answer}"></td> 
+				    <td th:text="${answer.correct}"></td> 
+				    <td sec:authorize="hasAuthority('EDIT')">
+				    	<a class="action-button" th:href="@{/quizzes/{id}/questions/answer/edit?questionId={Qid}&answerId={Aid}(id=${quiz.id}, Qid=${question.id}, Aid=${answer.id})}">Edit</a> 
+				    	<a id="answerRemoveBtn" class="action-button" >Remove</a>
+			    	</td>
+				  </tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/js/script.js"></script>
+</html>

@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Edit Question View - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div th:replace="fragments/header :: header"></div>
+			<div class="page-header">
+				<h1>Edit Question</h1>
+			</div>
+			<h2 id="quizHeader" th:text="'Quiz ' + ${quiz.id} + ' : ' + ${quiz.title}" th:data-quizid="${quiz.id}" th:data-questionid="${question.id}"></h2></br>
+				
+			<label for="c-question"><b>Current Question:</b></label>
+		    <input type="text" name="c-question" th:value="${question.question}" disabled/> <br/>		
+		    </br>
+		    <label for="u-question"><b>Updated Question:</b></label>
+		    <input id="questionInput" type="text" name="u-question" placeholder="e.g. What colour is a lemon?" required /> <br/>
+			
+			<br/>
+			<div class="question-actions">
+		    	<button id="updateQuestionBTN">Update Question</button>
+		    </div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/js/script.js"></script>
+</html>

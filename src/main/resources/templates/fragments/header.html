@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+	<title>Header - Navigation Bar</title>
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"> </script>
+	<script type="text/javascript" src="../js/csrf.js"></script>
+	<script type="text/javascript" src="../js/header.js"></script>
+</head>
+<body>
+	<div class="header" th:fragment="header">
+		<ul class="nav-header">
+			<li class="nav-BTN"><a href="/quizzes">Quizzes</a></li>
+			<li class="nav-BTN"><a href="javascript:history.back()">Go Back</a></li>
+			<li class="nav-BTN" sec:authorize="isAuthenticated()"><a href="/logout" onclick="logout()">Logout</a></li>
+        </ul>
+	</div>
+</body>
+</html>

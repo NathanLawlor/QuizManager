@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Create Quiz View - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<div th:replace="fragments/header :: header"></div>
+			<div class="page-header">
+				<h1>Create A New Quiz</h1>
+			</div>
+			
+			<form th:action="@{/quizzes/create}" method="POST" style="width:200px;margin:30px;">
+			    <label for="title"><b>Title:</b></label>
+			    <input type="text" name="title" placeholder="e.g. Quiz One" required /> <br/>
+				<br/>
+				<label for="category"><b>Category:</b></label>
+			    <input type="text" name="category" placeholder="e.g. Maths" required /> <br/>
+				<br/>
+			    <button type="submit">Create Quiz</button>
+			</form>
+		</div>
+	</body>
+</html>

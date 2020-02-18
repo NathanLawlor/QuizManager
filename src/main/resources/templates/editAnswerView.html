@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Edit Answer View - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div th:replace="fragments/header :: header"></div>
+			<div class="page-header">
+				<h1>Edit Answer Option</h1>
+			</div>
+			<h2 id="quizHeader" th:text="'Question: ' + ${question.question}" th:data-quizid="${quiz.id}"th:data-questionid="${question.id}" th:data-answerid="${answer.id}"></h2></br>
+				
+			<label for="c-answer"><b>Current Answer Option:</b></label>
+		    <input type="text" name="c-answer" th:value="${answer.answer}" disabled/> <br/>		
+		    <p th:text="'Correct : ' + ${answer.correct}"></p>
+		    </br>
+		    <label for="u-answer"><b>Updated Answer Option:</b></label>
+		    <input id="answerInput" type="text" name="u-answer" placeholder="e.g. Purple" required /> <br/>
+			
+			<br/>
+			<div class="answer-actions">
+		    	<button id="updateAnswerBTN">Update Answer</button>
+		    </div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/js/script.js"></script>
+</html>

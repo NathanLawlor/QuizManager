@@ -1,0 +1,94 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.wrapper {
+	margin: 20px;
+	justify-content: center;
+}
+
+.header {
+	width: 100%;
+	height: fit-content;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+}
+
+.nav-header {
+	width: 90vw;
+	display: flex;
+	justify-content: flex-start;
+	list-style: none;
+}
+
+ul {
+	padding: 0;
+  	list-style: none;
+  	text-align: center;
+}
+
+li,a {
+	width: 100px;
+}
+
+.nav-BTN {
+	font-size: 25px;
+}
+
+.login-title, .error-message, .error-code {
+	text-align: center;
+}
+
+.return-to-login, .return-to-quizzes {
+	text-align: center;
+}
+
+.login-form {
+	padding: 20px;
+	display: block;
+	text-align: center;
+}
+
+form {
+	display: inline-block;
+	text-align: left;
+}
+
+input {
+	width: 250px;
+}
+
+.quiz-table {
+	width: 100%;
+}
+
+table, th, td {
+	height: fit-content;
+	text-align: center;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+}
+
+.action-button {
+	margin: 10px;
+	padding: 5px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.new-button-action {
+	margin: 0;
+	padding: 10px;
+	font-size: 20px;
+}
+
+.message {
+	text-align: center;
+}
+

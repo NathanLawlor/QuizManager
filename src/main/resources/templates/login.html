@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<h1 class="login-title">Login</h1>
+			<div class="login-form">
+				<form th:action="@{/login}" method="POST" style="width:200px;margin:30px;">
+				    <label for="username"><b>Username:</b></label>
+				    <input type="text" name="username" placeholder="Enter username..." required /> <br/>
+					<br/>
+				    <label for="password"><b>Password:</b></label>
+				    <input type="password" name="password" placeholder="Enter password..." required /> <br/>
+					<br/>
+				    <button type="submit">Login</button>
+				</form>
+			</div>
+			<p class="message" th:text="${loginMessage}"></p>
+		</div>
+	</body>
+</html>

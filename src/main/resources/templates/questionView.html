@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity">
+	<head>
+		<meta charset="UTF-8">
+		<title>Question View - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<div th:replace="fragments/header :: header"></div>
+			<div class="page-header">
+				<h1>Questions</h1>
+				<h2 th:text="'Quiz ' + ${quiz.id} + ' : ' + ${quiz.title}"></h2>
+			</div>
+			<div sec:authorize="hasAuthority('EDIT')" class="new-button-action">
+				<a th:href="@{/quizzes/{id}/questions/add(id=${quiz.id})}">Add Question +</a>
+			</div>
+			<div class="body">
+				<table class="quiz-table">
+				  <tr>
+				    <th>Question No.</th>
+				    <th>Question</th> 
+				  </tr>
+  		  		  <tr th:each="question : ${questionList}" th:data-questionId="${question.id}">
+				    <td id="questionOrderCell"></td>
+				    <td th:text="${question.question}"></td> 
+				    <td sec:authorize="hasAnyAuthority('EDIT', 'VIEW')">
+				    	<a sec:authorize="hasAnyAuthority('EDIT', 'VIEW')" class="action-button" th:href="@{/quizzes/{id}/questions/answer/view?questionId={Qid}(id=${quiz.id}, Qid=${question.id})}">View</a> 
+				    	<a sec:authorize="hasAuthority('EDIT')" class="action-button" th:href="@{/quizzes/{id}/questions/edit?questionId={Qid}(id=${quiz.id}, Qid=${question.id})}">Edit</a>
+				    	<a sec:authorize="hasAuthority('EDIT')" id="questionRemoveBtn" class="action-button">Remove</a>
+			    	</td>
+				  </tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/js/script.js"></script>
+</html>

@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Page Not Found - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<h1 class="error-message" th:text="${errorMessage}"></h1></br>
+			<h2 class="error-code" th:text="'Error: ' + ${statusCode}"></h2></br>
+			<div class="return-to-quizzes">
+				<a href="/quizzes">Return to The Quizzes View</a>
+			</div>
+		</div>
+	</body>
+</html>

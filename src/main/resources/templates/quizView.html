@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity">
+	<head>
+		<meta charset="UTF-8">
+		<title>Quiz View - Quiz Manager</title>
+		
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<div th:replace="fragments/header :: header"></div>
+			<div class="page-header">
+				<h1>Quizzes</h1>
+				<div sec:authorize="hasAuthority('EDIT')" class="new-button-action">
+					<a href="/quizzes/create">New Quiz +</a>
+				</div>
+			</div>
+			<div class="body">
+				<table class="quiz-table">
+				  <tr>
+				    <th>Quiz ID</th>
+				    <th>Title</th> 
+				    <th>Category</th>
+				  </tr>
+				  <tr th:each="quiz : ${quizList}" th:data-quizId="${quiz.id}">
+				    <td th:text="${quiz.id}"></td>
+				    <td th:text="${quiz.title}"></td> 
+				    <td th:text="${quiz.category}"></td>
+				    <td>
+				    	<a class="action-button" th:href="@{/quizzes/{id}/questions(id=${quiz.id})}">View</a> 
+				    	<a sec:authorize="hasAuthority('EDIT')" id="quizRemoveBtn" class="action-button">Remove</a>
+			    	</td>
+				  </tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/js/script.js"></script>
+</html>
